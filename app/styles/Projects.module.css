@@ -1,0 +1,288 @@
+.section {
+  background: #0A0A0C;
+  padding: 10vh 5vw 12vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ambient glow top right */
+.section::before {
+  content: '';
+  position: absolute;
+  top: -100px; right: -100px;
+  width: 500px; height: 500px;
+  background: radial-gradient(ellipse, rgba(74,158,219,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+/* ─── Header ─────────────────────────────────────────────────── */
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.sectionTag {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(232,114,42,0.8);
+}
+
+.tagLine {
+  display: block;
+  width: 28px;
+  height: 1px;
+  background: rgba(232,114,42,0.6);
+}
+
+.heading {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 400;
+  line-height: 1.1;
+  color: #F5F0EA;
+}
+
+.heading em {
+  font-style: italic;
+  color: rgba(232,114,42,0.85);
+}
+
+.subheading {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(0.85rem, 1.3vw, 0.95rem);
+  font-weight: 300;
+  color: rgba(245,240,234,0.4);
+  max-width: 480px;
+  line-height: 1.7;
+}
+
+/* ─── Cards Grid ─────────────────────────────────────────────── */
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* ─── Card ───────────────────────────────────────────────────── */
+.card {
+  position: relative;
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 16px;
+  padding: 2.5rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-bottom: 1.5rem;
+
+  /* Entrance animation */
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease, border-color 0.3s ease;
+}
+
+.card:nth-child(2) { transition-delay: 0.1s; }
+.card:nth-child(3) { transition-delay: 0.2s; }
+
+.card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card:hover {
+  border-color: rgba(var(--accent-rgb, 232,114,42), 0.25);
+  border-color: color-mix(in srgb, var(--accent) 25%, transparent);
+}
+
+/* Top row */
+.cardTop {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+}
+
+.cardNumber {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3.5rem;
+  line-height: 1;
+  color: var(--accent);
+  opacity: 0.25;
+  flex-shrink: 0;
+  letter-spacing: 0.04em;
+}
+
+.cardMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding-top: 0.3rem;
+  flex: 1;
+}
+
+.githubLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.04);
+  color: rgba(245,240,234,0.7);
+  flex-shrink: 0;
+  transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease, transform 0.2s ease;
+}
+
+.githubLink:hover {
+  background: color-mix(in srgb, var(--accent) 18%, transparent);
+  border-color: color-mix(in srgb, var(--accent) 50%, transparent);
+  color: var(--accent);
+  transform: scale(1.08) rotate(-4deg);
+}
+
+.githubLink:active { transform: scale(0.96); }
+
+.cardRole {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  opacity: 0.85;
+}
+
+.cardPeriod {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: rgba(245,240,234,0.3);
+  letter-spacing: 0.04em;
+}
+
+/* Divider */
+.cardDivider {
+  width: 100%;
+  height: 1px;
+  background: rgba(255,255,255,0.06);
+}
+
+/* Title */
+.cardTitle {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+  font-weight: 400;
+  color: #F5F0EA;
+  line-height: 1.2;
+}
+
+/* Summary */
+.cardSummary {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(0.85rem, 1.2vw, 0.95rem);
+  font-weight: 300;
+  color: rgba(245,240,234,0.55);
+  line-height: 1.75;
+  max-width: 680px;
+}
+
+/* Bullets */
+.bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.bullet {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(0.8rem, 1.1vw, 0.875rem);
+  font-weight: 300;
+  color: rgba(245,240,234,0.5);
+  line-height: 1.65;
+}
+
+.bulletDot {
+  display: block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.6;
+  flex-shrink: 0;
+  margin-top: 0.55em;
+}
+
+/* Tags */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.4rem;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.22rem 0.7rem;
+  border-radius: 4px;
+  border: 1px solid rgba(255,255,255,0.08);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: rgba(245,240,234,0.5);
+  background: rgba(255,255,255,0.03);
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.card:hover .tag {
+  border-color: color-mix(in srgb, var(--accent) 20%, transparent);
+  color: rgba(245,240,234,0.7);
+}
+
+/* Ambient glow in card corner */
+.cardGlow {
+  position: absolute;
+  bottom: -60px;
+  right: -60px;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(ellipse, var(--accent) 0%, transparent 70%);
+  opacity: 0.04;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.card:hover .cardGlow {
+  opacity: 0.09;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .card {
+    padding: 1.75rem;
+  }
+
+  .cardNumber {
+    font-size: 2.5rem;
+  }
+}

@@ -1,0 +1,386 @@
+.section {
+  background: #0A0A0C;
+  padding: 4vh 5vw 14vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Warm glow bottom left */
+.section::after {
+  content: '';
+  position: absolute;
+  bottom: -80px; left: -80px;
+  width: 500px; height: 400px;
+  background: radial-gradient(ellipse, rgba(232,114,42,0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8rem;
+}
+
+/* ─── Block entrance animation ───────────────────────────────── */
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.75s ease, transform 0.75s ease;
+}
+
+.block:nth-child(2) { transition-delay: 0.08s; }
+.block:nth-child(3) { transition-delay: 0.16s; }
+
+.block.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── Shared ─────────────────────────────────────────────────── */
+.sectionTag {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(232,114,42,0.8);
+}
+
+.tagLine {
+  display: block;
+  width: 28px;
+  height: 1px;
+  background: rgba(232,114,42,0.6);
+}
+
+.heading {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+  font-weight: 400;
+  line-height: 1.1;
+  color: #F5F0EA;
+}
+
+.heading em {
+  font-style: italic;
+  color: rgba(232,114,42,0.85);
+}
+
+/* ─── Internship ─────────────────────────────────────────────── */
+.internshipCard {
+  display: flex;
+  gap: 2.5rem;
+  align-items: flex-start;
+}
+
+.internshipLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+  width: 120px;
+  padding-top: 0.2rem;
+}
+
+.internPeriod {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: rgba(232,114,42,0.7);
+  text-align: center;
+  line-height: 1.5;
+}
+
+.internTimeline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.timelineDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid #E8722A;
+  background: rgba(232,114,42,0.2);
+  flex-shrink: 0;
+}
+
+.timelineLine {
+  width: 1px;
+  height: 180px;
+  background: linear-gradient(to bottom, rgba(232,114,42,0.3), transparent);
+}
+
+.internshipRight {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 14px;
+  padding: 2rem;
+}
+
+.internHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.internRole {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(1.3rem, 2.2vw, 1.7rem);
+  font-weight: 400;
+  color: #F5F0EA;
+}
+
+.internMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.internCompany {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #E8722A;
+  letter-spacing: 0.06em;
+}
+
+.internDivider {
+  color: rgba(245,240,234,0.2);
+  font-size: 0.75rem;
+}
+
+.internLocation {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: rgba(245,240,234,0.35);
+}
+
+/* Bullets shared */
+.bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.bullet {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(0.8rem, 1.1vw, 0.875rem);
+  font-weight: 300;
+  color: rgba(245,240,234,0.5);
+  line-height: 1.65;
+}
+
+.bulletDot {
+  display: block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #E8722A;
+  opacity: 0.6;
+  flex-shrink: 0;
+  margin-top: 0.55em;
+}
+
+/* ─── Education grid ─────────────────────────────────────────── */
+.eduGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.eduCard {
+  position: relative;
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 14px;
+  padding: 1.75rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: border-color 0.3s ease;
+}
+
+.eduCard:hover {
+  border-color: rgba(232,114,42,0.2);
+}
+
+.eduYear {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.8rem;
+  line-height: 1;
+  color: #E8722A;
+  opacity: 0.2;
+  letter-spacing: 0.04em;
+}
+
+.eduBody {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.eduDegree {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #F5F0EA;
+  line-height: 1.3;
+}
+
+.eduInstitution {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: rgba(245,240,234,0.35);
+  line-height: 1.5;
+}
+
+.gpaRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.gpaLabel {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(232,114,42,0.6);
+}
+
+.gpaValue {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(245,240,234,0.7);
+}
+
+.gpaBar {
+  flex: 1;
+  height: 2px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 1px;
+  overflow: hidden;
+}
+
+.gpaFill {
+  height: 100%;
+  background: linear-gradient(to right, rgba(232,114,42,0.6), rgba(232,114,42,0.3));
+  border-radius: 1px;
+}
+
+.eduGlow {
+  position: absolute;
+  bottom: -40px; right: -40px;
+  width: 120px; height: 120px;
+  background: radial-gradient(ellipse, rgba(232,114,42,0.08), transparent 70%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.eduCard:hover .eduGlow { opacity: 1; }
+
+/* ─── Certifications ─────────────────────────────────────────── */
+.certGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.certCard {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.4rem 1.75rem;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 12px;
+  background: rgba(255,255,255,0.02);
+  margin-bottom: 0.75rem;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+
+.certCard:hover {
+  border-color: rgba(232,114,42,0.2);
+  background: rgba(232,114,42,0.03);
+}
+
+.certIcon {
+  font-size: 1.1rem;
+  color: #E8722A;
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+
+.certTitle {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(0.82rem, 1.2vw, 0.92rem);
+  font-weight: 500;
+  color: rgba(245,240,234,0.8);
+  line-height: 1.4;
+}
+
+.certIssuer {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: rgba(245,240,234,0.3);
+  margin-top: 0.2rem;
+  letter-spacing: 0.04em;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .eduGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .internshipCard {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .internshipLeft {
+    flex-direction: row;
+    width: auto;
+    align-items: center;
+  }
+
+  .timelineLine { display: none; }
+
+  .eduGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .inner {
+    gap: 5rem;
+  }
+}

@@ -1,0 +1,11 @@
+.canvas {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.canvas canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
